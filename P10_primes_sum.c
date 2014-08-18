@@ -1,11 +1,12 @@
 #include<stdio.h>
 #include<math.h>
+#include<stdbool.h>
 
 void main()
 {
     long int iter, iter_2, running_sum, number_primes, N;
     N   = pow(10, 6);
-    int arr[N];
+    bool arr[N];
 
     // Fill up the array upfront
     for( iter=0; iter<N; iter++ )
@@ -28,15 +29,15 @@ void main()
             number_primes   += 1;
             if( 2 * (2*iter - 1 ) > (2 * N - 1 ) )
             {
-                for( iter_2=2; 2 * (2*iter_2 - 1 ) <= (2 * N - 1 ); iter_2++ )
+                for( iter_2=2; ( 2*iter_2 - 1 ) * iter <= (2 * N - 1 ); iter_2++ )
                 {
                     arr[iter_2] = 0;
-                    printf( "\niter is %d \t iter_2 is %d", iter, iter_2 );
+                    printf( "\niter is %ld \t iter_2 is %ld", iter, iter_2 );
                 };
             };
         };
     };
 
     // Print the result !
-    printf( "\n Sum of all the primes leq %d is %d. \n Number of primes is %d", N, running_sum, number_primes );
+    printf( "\n Sum of all the primes leq %ld is %ld. \n Number of primes is %ld", N, running_sum, number_primes );
 }
